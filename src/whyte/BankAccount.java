@@ -1,20 +1,17 @@
 package whyte;
 
 
-// NOW SEE IF YOU CAN SAVE THE USERNAME AND PASSWORD INTO A TEXT FILE TO USE AS LOGIN
 public class BankAccount {
 
-    private float balance;
-    private int bonus;
     private int choice;
     public boolean flag = false;
 
     Balance view_balance = new Balance();
     Deposit deposit = new Deposit();
+    Withdraw withdraw = new Withdraw();
     Input input = new Input();
 
 
-    // In order to ACCESS "Login" CLASS, MAKE AN INSTANCE as a PARAMETER
     public void showMenu() {
         System.out.println("\nThese are the available options: \n");
 
@@ -27,10 +24,6 @@ public class BankAccount {
                 "3. Withdraw\n" +
                 "4. Quit\n");
 
-        /*System.out.print("Please enter the number of your choice: ");
-
-        // Using scanner from "Login" class
-        setChoice(input.scan.nextInt()); */
 
         while (!flag) {
             System.out.print("Please enter the number of your choice: ");
@@ -40,25 +33,26 @@ public class BankAccount {
 
             switch (choice) {
                 case 1:
-                    System.out.println("You selected VIEW BALANCE");
-                    view_balance.viewBalance();
+                    System.out.println("You selected VIEW BALANCE.\n");
+                    view_balance.viewBalance(this);
                     flag = true;
                     break;
 
                 case 2:
-                    System.out.println("You selected DEPOSIT\n");
+                    System.out.println("You selected DEPOSIT.\n");
                     deposit.makeDeposit(this);
                     flag = true;
                     break;
 
                 case 3:
-                    System.out.println("You selected WITHDRAW");
-                    // withdraw();
+                    System.out.println("You selected WITHDRAW.\n");
+                    withdraw.doWithdraw(this);
+                    flag = true;
                     break;
 
                 case 4:
-                    System.out.println("You selected QUIT");
-                    //quit();
+                    System.out.println("You selected QUIT.");
+                    flag = true;
                     break;
 
                 default:
@@ -72,9 +66,6 @@ public class BankAccount {
         if (choose == 1 || choose == 2 || choose == 3 || choose == 4) {
             choice = choose;
         }
-        /*else {
-            System.out.println("Invalid choice");
-        }*/
     }
 
     public int getChoice() {
@@ -82,4 +73,3 @@ public class BankAccount {
     }
 
 }
-

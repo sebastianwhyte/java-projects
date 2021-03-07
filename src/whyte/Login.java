@@ -1,22 +1,10 @@
 package whyte;
 
-import java.util.*;
-import java.io.Console;
-
-// IF USERNAME AND PASSWORD MATCH, GRANT ACCESS AND MOVE TO BANK ACCOUNT CLASS
-
 public class Login {
 
     private String userName, password;
     public String user_login, pass_login;
     boolean running = true;
-
-    //public Scanner scan = new Scanner(System.in);
-
-
-    enum AccountType {
-
-    }
 
 
     public void makeAccount () {
@@ -30,14 +18,11 @@ public class Login {
 
         setUserName(input.scan.next());
 
-        //System.out.println("Hello, " + getUserName() + "\n");
 
         System.out.print("Please enter a password, that is between 6-10 characters: ");
         setPassword(input.scan.next().trim());
 
-        //System.out.println("Your password is set to: " + getPassword());
 
-        Console console = System.console();
         System.out.print("\nPlease log in.\n" + "Enter username: ");
         user_login = input.scan.next();
 
@@ -48,8 +33,7 @@ public class Login {
 
         if (user_login.equals(userName) && pass_login.equals(password)) {
             System.out.println("ACCESS GRANTED");
-            //bank_account.showMenu();
-            bank_account.showMenu();    // In order to access the "Bank Account" class, MAKE an INSTANCE and INCLUDE "this" in PARAMETER
+            bank_account.showMenu();
         }
         else {
             System.out.println("ACCESS DENIED");
@@ -82,11 +66,10 @@ public class Login {
 
 
     // Password Setter
-    // TRY TO MAKE WHILE LOOP THAT KEEPS ASKING FOR PASSWORD IF IT DOESNT MEET CRITERIA
     public void setPassword(String pass) {
 
         if (pass.length() >= 6 && pass.length() <= 10) {
-            this.password = pass;
+            password = pass;
         }
         else {
             System.out.println("Invalid password");
@@ -94,38 +77,10 @@ public class Login {
 
     }
 
+
+    // Password Getter
     public String getPassword() {
         return password;
     }
 
-
-    /*
-
-    // Show Menu
-    public void showMenu() {
-        System.out.println("\nThese are the available options: \n");
-
-        System.out.println("====================\n" +
-                "\t\tMENU\n" +
-                "=====================");
-
-        System.out.println("Please enter the number of your choice: ");
-        setChoice(scan.nextInt());
-    }
-
-
-    public void setChoice(int choose) {
-        if (choose == 1 || choose == 2 || choose == 3 || choose == 4) {
-            choice = choose;
-        }
-        else {
-            System.out.println("Invalid choice");
-        }
-    }
-
-    public int getChoice() {
-        return choice;
-    }
-
-     */
 }

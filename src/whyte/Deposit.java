@@ -1,34 +1,59 @@
 package whyte;
 
-public class Deposit {
-    private float amount;
-    public char goBackHome;
+import java.text.*;
+import java.util.*;
 
-    
+
+public class Deposit {
+
+    private float amount;
+    char choice;
+
     Balance balance = new Balance();
     Input input = new Input();
+
+    NumberFormat formatter = new DecimalFormat("#0.00");
 
 
     public void makeDeposit(BankAccount bankAccount) {
 
-        System.out.println("Your current balance is: " + balance.getBalance() +
-                " How much would you like to deposit? ");
-        setDepositAmount(Float.parseFloat(input.scan.next()));
+        boolean flag = true;
+        System.out.println("Your current balance is: " + balance.getBalance());
 
-        //amount = input.scan.nextFloat();
+        while (flag) {
+
+            System.out.print("How much would you like to deposit? ");
+            amount = input.scan.nextFloat();
+            System.out.println("");
+
+            try {
+
+                if (amount >= 0) {
+                    setDepositAmount(amount);
+                    flag = false;
+                    break;
+                }
+                else {
+                    System.out.println("Invalid input.");
+                }
+            }
+            catch (InputMismatchException exception) {
+                System.out.println("Invalid input.");
+            }
+        }
 
         balance.bal += amount;
 
         balance.setBalance(balance.bal);
 
 
-        System.out.println("You deposited: " + amount + ". Your current balance is now " + balance.bal);
+        System.out.println("You deposited: " + formatter.format(amount) + ". Your current balance is now " +
+                formatter.format(balance.bal) + ".\nWould you like to go back to the main menu? Type 'y' for yes and 'n' to quit. ");
 
-        System.out.println("Would you like to go back to the main menu? Type 'y' for yes and 'n' to quit.");
-        goBackHome = input.scan.next().charAt(0);
+        choice = input.scan.next().charAt(0);
 
 
-        switch (goBackHome) {
+        switch (choice) {
             case 'y':
                 bankAccount.showMenu();
                 break;
