@@ -52,6 +52,7 @@ public class BankAccount {
 
                 case 4:
                     System.out.println("You selected QUIT.");
+                    System.out.println("Thank you for your business. Goodbye!");
                     flag = true;
                     break;
 

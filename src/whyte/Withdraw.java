@@ -35,6 +35,9 @@ public class Withdraw {
                 else if (withdrawal_amount > balance.bal) {
                     System.out.println("You do not have enough funds in your account.");
                 }
+                else if (withdrawal_amount == 0) {
+                    System.out.println("You haven't withdrawn anything.");
+                }
                 else {
                     System.out.println("Invalid option.\n");
                 }
