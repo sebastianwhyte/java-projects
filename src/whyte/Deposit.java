@@ -28,10 +28,13 @@ public class Deposit {
 
             try {
 
-                if (amount >= 0) {
+                if (amount > 0) {
                     setDepositAmount(amount);
                     flag = false;
                     break;
+                }
+                else if (amount == 0) {
+                    System.out.println("You haven't deposited anything.");
                 }
                 else {
                     System.out.println("Invalid input.");
