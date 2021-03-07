@@ -18,7 +18,7 @@ public class Deposit {
     public void makeDeposit(BankAccount bankAccount) {
 
         boolean flag = true;
-        System.out.println("Your current balance is: " + balance.getBalance());
+        System.out.println("Your current balance is: " + formatter.format(balance.getBalance()));
 
         while (flag) {
 
